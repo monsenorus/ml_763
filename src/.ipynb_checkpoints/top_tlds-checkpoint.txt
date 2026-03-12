@@ -1,0 +1,10 @@
+.com
+.org
+.net
+.de
+.io
+.uk
+.ru
+.co
+.au
+.app
