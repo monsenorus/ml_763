@@ -5,10 +5,17 @@ import numpy as np
 import joblib
 import tensorflow as tf
 
-# loading files
-model = tf.keras.models.load_model("neural_network_model2.keras")
-scaler = joblib.load("neural_network_scaler2.pkl")
-top_tlds = joblib.load("neural_network_top_tlds2.pkl")
+# had to add this for the cloud version of streamlit because it did not find the model-files otherwise:
+import os
+BASE_DIR = os.path.dirname(__file__)
+model     = tf.keras.models.load_model(os.path.join(BASE_DIR, "neural_network_model2.keras"))
+scaler    = joblib.load(os.path.join(BASE_DIR, "neural_network_scaler2.pkl"))
+top_tlds  = joblib.load(os.path.join(BASE_DIR, "neural_network_top_tlds2.pkl"))
+
+  # loading files (old - worked locally but not in cloud):
+  # model = tf.keras.models.load_model("neural_network_model2.keras")
+  # scaler = joblib.load("neural_network_scaler2.pkl")
+  # top_tlds = joblib.load("neural_network_top_tlds2.pkl")
 
 st.title("Phishing Domain Detector")
 st.write("Enter the features of a domain to predict whether it is legitimate or phishing.")
