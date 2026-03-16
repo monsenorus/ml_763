@@ -35,15 +35,15 @@ with st.expander("How to fill in the fields"):
 """)
 
 # creating user inputs
-url_length        = st.number_input("URL Length",                       min_value=0,   value=30)
+url_length        = st.number_input("URL Length",                       min_value=0,   value=10)
 is_domain_ip      = st.selectbox("Is Domain an IP Address?",            [0, 1])
 digits_in_url     = st.number_input("Number of Digits in URL",          min_value=0,   value=0)
-special_chars     = st.number_input("Number of Special Chars in URL",   min_value=0,   value=1)
+special_chars     = st.number_input("Number of Special Chars in URL",   min_value=0,   value=0)
 is_https          = st.selectbox("Is HTTPS?",                           [1, 0])
-domain_length     = st.number_input("Domain Length",                    min_value=0,   value=20)
-subdomains        = st.number_input("Number of Subdomains",             min_value=0,   value=2)
+domain_length     = st.number_input("Domain Length",                    min_value=0,   value=2)
+subdomains        = st.number_input("Number of Subdomains",             min_value=0,   value=1)
 has_obfuscation   = st.selectbox("Has Obfuscation?",                    [0, 1])
-tld               = st.selectbox("TLD", top_tlds + ["other"])
+tld               = st.selectbox("TLD", top_tlds + ["other"], index=(top_tlds + ["other"]).index("uk"))
 
 # feature row
 tld_clean = tld if tld in top_tlds else "other"
