@@ -70,9 +70,9 @@ sample_df = pd.DataFrame([sample])
 if st.button("Predict"):
     sample_scaled = scaler.transform(sample_df)
     prob = model.predict(sample_scaled)[0][0]
-    label = "Phishing!" if prob >= 0.5 else "Legitimate"
-    if prob >= 0.5:
+    label = "Phishing!" if prob < 0.5 else "Legitimate"
+    if prob < 0.5:
         st.error(f"Prediction: {label}")
     else:
         st.success(f"Prediction: {label}")
-    st.info(f"Phishing Probability: {prob:.2%}")
+    st.info(f"Phishing Probability: {1 - prob:.2%}")
